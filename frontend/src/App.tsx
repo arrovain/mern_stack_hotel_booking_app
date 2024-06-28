@@ -1,19 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Route, Router, Routes } from 'react-router-dom';
 import './App.css'
+import Layout from './layout/Layout';
+import { Navigate } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  const App = () => {
-    const { isLoggedIn } = useAppContext();
+const App = () => {
+
     return (
       <Router>
         <Routes>
-          <Route>
+          <Route path="/"
+        element={<Layout></Layout>}>
             </Route>
+          <Route path="/search" element={<>Search Page</>}></Route>  
+          <Route path="*" element={<Navigate to="/" />}></Route>  
+            
             
         </Routes>
+        </Router>
+      );};
 
 export default App
