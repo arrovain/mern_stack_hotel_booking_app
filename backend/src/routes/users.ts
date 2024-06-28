@@ -1,6 +1,6 @@
 import express from "express"
 import User from "../../../frontend/src/models/user"
-
+import jwt from "jsonwebtoken"
 
 const router = express.Router
 
@@ -14,6 +14,9 @@ router.post("/register", async (req: Request, res:Response)=>{
         }
         user = new User(req.body)
         await user.save();
+        const token = jwt.sign({userId: user.id}, process.env.JWT_SECRET_KEY as string, {
+            expiresIn:"1d"
+        } )
     }
     catch(error){
         res.status(500).send({"something went wrong"})
