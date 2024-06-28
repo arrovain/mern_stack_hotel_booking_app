@@ -1,3 +1,5 @@
+import Header from "../components/Header";
+
 const Layout = () => {
     return (
         <div className="flex flex-col min-h-screen">
@@ -5,3 +7,5 @@ const Layout = () => {
         </div>
     );
 };
+
+export default Layout;
